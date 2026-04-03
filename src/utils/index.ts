@@ -2,9 +2,9 @@ import { TContactFormData } from '@/components'
 import { TData } from '@/constants'
 import { columns } from '@/functions'
 
-const LOCAL_STORAGE_KEY = 'bolao-llibertadores-2025'
+const LOCAL_STORAGE_KEY = 'bolao-copa-2026'
 
-type TKey = 'data' | 'contact' | 'first-access'
+type TKey = 'data' | 'contact' | 'first-access-1'
 
 export const saveToLocalStorage = (
   key: TKey,

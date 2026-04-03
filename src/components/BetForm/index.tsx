@@ -40,7 +40,7 @@ export const BetForm = ({
           return (
             <Paper key={key} sx={{ mb: 2 }}>
               <ListSubheader sx={{ bgcolor: 'warning.light', color: 'black' }}>
-                {key}
+                Grupo {key}
               </ListSubheader>
               <List>
                 {games.map((game, index) => {
@@ -56,7 +56,7 @@ export const BetForm = ({
                           color="textSecondary"
                           sx={{ mr: 1 }}
                         >
-                          {`${game.date} ${game.time}`}
+                          {`${game.date} ${game.time} - ${game.place}`}
                         </Typography>
                       </Box>
                       <Box sx={S.Grid}>

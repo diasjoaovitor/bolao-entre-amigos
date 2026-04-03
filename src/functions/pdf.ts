@@ -1,4 +1,4 @@
-import { TDocumentDefinitions } from 'pdfmake/interfaces'
+import { TableCell, TDocumentDefinitions } from 'pdfmake/interfaces'
 
 import { TData } from '@/constants'
 
@@ -12,6 +12,7 @@ export const columns = [
   'J',
   'Data',
   'Hora',
+  'Local',
   'Grupo',
   'Mandante',
   '',
@@ -21,18 +22,20 @@ export const columns = [
 ]
 
 export const pdf = (data: TData, info: TInfo): TDocumentDefinitions => {
-  const formattedData = Object.entries(data).flatMap(([group, games]) =>
-    games.map((game, index) => [
-      { text: index + 1 },
-      { text: game.date },
-      { text: game.time },
-      { text: group },
-      { text: game.home },
-      { text: game.result[0] },
-      { text: 'X' },
-      { text: game.result[1] },
-      { text: game.away }
-    ])
+  const formattedData: TableCell[][] = Object.entries(data).flatMap(
+    ([group, games]) =>
+      games.map((game, index) => [
+        { text: index + 1 },
+        { text: game.date },
+        { text: game.time },
+        { text: game.place },
+        { text: group },
+        { text: game.home },
+        { text: game.result[0]! },
+        { text: 'X' },
+        { text: game.result[1]! },
+        { text: game.away }
+      ])
   )
 
   return {

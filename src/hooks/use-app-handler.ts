@@ -35,7 +35,7 @@ export const useAppHandler = () => {
 
   const defaultBets = getFromLocalStorage('data')
   const defaultContact = getFromLocalStorage('contact')
-  const isFirstAccess = !!getFromLocalStorage('first-access')
+  const isFirstAccess = !!getFromLocalStorage('first-access-1')
 
   const hasBet = Object.keys(defaultBets).length
 
@@ -50,7 +50,7 @@ export const useAppHandler = () => {
   useEffect(() => {
     if (isFirstAccess) {
       setWelcomeModalIsOpened(true)
-      saveToLocalStorage('first-access', false)
+      saveToLocalStorage('first-access-1', false)
     }
   }, [isFirstAccess])
 
