@@ -19,6 +19,7 @@ import {
   applyInputFocus,
   dataObjectToHtml,
   getFromLocalStorage,
+  getPossibleIncorrectScores,
   hasInvalidBet,
   saveToLocalStorage
 } from '@/utils'
@@ -27,7 +28,7 @@ export type TBetChangeParams = {
   key: TDataKey
   index: number
   teamKey: 'home' | 'away'
-  value: string | number
+  value: string | number | null
 }
 
 export const useAppHandler = () => {
@@ -41,7 +42,11 @@ export const useAppHandler = () => {
 
   const [bets, setBets] = useState<TData>(hasBet > 0 ? defaultBets : data)
   const [alert, setAlert] = useState<TAlertParams | null>(null)
-  const [dialog, setDialog] = useState<TDialogParams | null>(null)
+  const [clearFormDialog, setClearFormDialog] = useState<TDialogParams | null>(
+    null
+  )
+  const [incorrectScoreDialog, setIncorrectScoreDialog] =
+    useState<TDialogParams | null>(null)
   const [contactFormIsOpened, setContactFormIsOpened] = useState(false)
   const [welcomeModalIsOpened, setWelcomeModalIsOpened] = useState(false)
 
@@ -56,7 +61,10 @@ export const useAppHandler = () => {
 
   const handleChange = ({ key, index, teamKey, value }: TBetChangeParams) => {
     setBets((bets) => {
-      bets[key]![index].result[teamKey === 'home' ? 0 : 1] = value
+      const number = Number(value)
+      bets[key]![index].result[teamKey === 'home' ? 0 : 1] = !isNaN(number)
+        ? number
+        : null
       saveToLocalStorage('data', bets)
       return bets
     })
@@ -65,7 +73,7 @@ export const useAppHandler = () => {
   const handleClear = () => {
     setBets(data)
     saveToLocalStorage('data', data)
-    setDialog(null)
+    setClearFormDialog(null)
     setAlert({
       severity: 'success',
       title: 'Dados limpos com sucesso!'
@@ -75,6 +83,8 @@ export const useAppHandler = () => {
   const handleBetFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    const { elements } = e.currentTarget
+
     const invalidBet = hasInvalidBet(bets)
 
     if (invalidBet) {
@@ -82,7 +92,31 @@ export const useAppHandler = () => {
         severity: 'error',
         title: 'Existem campos com dados inválidos!'
       })
-      applyInputFocus(e.currentTarget.elements)
+      applyInputFocus(elements)
+      return
+    }
+
+    const possibleIncorrectScores = getPossibleIncorrectScores(bets)
+
+    if (possibleIncorrectScores.length) {
+      setIncorrectScoreDialog({
+        title:
+          possibleIncorrectScores.length > 1
+            ? 'Tem certeza que os placares estão corretos?'
+            : `Tem certeza que o placar está correto?`,
+        description: possibleIncorrectScores.map(
+          (score) =>
+            `Você apostou ${score.result[0]} x ${score.result[1]} para o jogo ${score.home} x ${score.away}`
+        ),
+        handleAccept: () => {
+          setIncorrectScoreDialog(null)
+          setContactFormIsOpened(true)
+        },
+        handleReject: () => {
+          setIncorrectScoreDialog(null)
+          setTimeout(() => applyInputFocus(elements), 100)
+        }
+      })
       return
     }
 
@@ -121,9 +155,10 @@ export const useAppHandler = () => {
     bets,
     handleChange,
     handleClear: () => {
-      setDialog({
+      setClearFormDialog({
         title: 'Deseja realmente limpar os dados?',
-        handleAccept: handleClear
+        handleAccept: handleClear,
+        handleReject: () => setClearFormDialog(null)
       })
     },
     handleSubmit: handleBetFormSubmit
@@ -137,11 +172,17 @@ export const useAppHandler = () => {
       }
     : null
 
-  const dialogProps: TDialogProps | null = dialog
+  const clearFormDialogProps: TDialogProps | null = clearFormDialog
     ? {
-        open: !!dialog,
-        ...dialog,
-        handleClose: () => setDialog(null)
+        open: !!clearFormDialog,
+        ...clearFormDialog
+      }
+    : null
+
+  const incorrectScoreDialogProps: TDialogProps | null = incorrectScoreDialog
+    ? {
+        open: !!incorrectScoreDialog,
+        ...incorrectScoreDialog
       }
     : null
 
@@ -164,7 +205,8 @@ export const useAppHandler = () => {
     betFormProps,
     alertProps,
     contactFormProps,
-    dialogProps,
+    clearFormDialogProps,
+    incorrectScoreDialogProps,
     welcomeProps,
     isLoading,
     handleWelcomeModalOpen

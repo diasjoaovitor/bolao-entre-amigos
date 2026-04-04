@@ -4,7 +4,8 @@ import { TData } from '@/constants'
 
 type TInfo = {
   name: string
-  email: string
+  nickname?: string
+  email?: string
   phone: string
 }
 
@@ -50,6 +51,10 @@ export const pdf = (data: TData, info: TInfo): TDocumentDefinitions => {
                 border: [true, true, true, false]
               },
               {
+                text: ['Apelido'],
+                border: [true, true, true, false]
+              },
+              {
                 text: ['Email'],
                 border: [true, true, true, false]
               },
@@ -63,7 +68,10 @@ export const pdf = (data: TData, info: TInfo): TDocumentDefinitions => {
                 text: [info.name]
               },
               {
-                text: [info.email]
+                text: [info.nickname || '-']
+              },
+              {
+                text: [info.email || '-']
               },
               {
                 text: [info.phone]

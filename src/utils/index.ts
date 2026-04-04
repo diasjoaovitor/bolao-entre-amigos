@@ -1,5 +1,5 @@
 import { TContactFormData } from '@/components'
-import { TData } from '@/constants'
+import { TData, TGame } from '@/constants'
 import { columns } from '@/functions'
 
 const LOCAL_STORAGE_KEY = 'bolao-copa-2026'
@@ -30,10 +30,31 @@ export const hasInvalidBet = (bet: TData) => {
   )
 }
 
+export const getPossibleIncorrectScores = (bet: TData): TGame[] => {
+  const possibleIncorrectScores: TGame[] = []
+  Object.values(bet).forEach((group) =>
+    group.forEach((match) =>
+      match.result.forEach((value) => {
+        const number = Number(value)
+        if (value !== null && Number.isInteger(number) && number > 10) {
+          possibleIncorrectScores.push(match)
+          return true
+        }
+        return false
+      })
+    )
+  )
+  return possibleIncorrectScores
+}
+
 export const applyInputFocus = (elements: HTMLFormControlsCollection) => {
   for (const element of elements) {
     if (element instanceof HTMLInputElement) {
-      if (element.value === '' || Number(element.value) < 0) {
+      if (
+        element.value === '' ||
+        Number(element.value) < 0 ||
+        Number(element.value) > 10
+      ) {
         element.focus()
         break
       }

@@ -17,7 +17,8 @@ export const App = () => {
     betFormProps,
     alertProps,
     contactFormProps,
-    dialogProps,
+    clearFormDialogProps,
+    incorrectScoreDialogProps,
     welcomeProps,
     isLoading,
     handleWelcomeModalOpen
@@ -41,7 +42,8 @@ export const App = () => {
         <BetForm {...betFormProps} />
         <ContactForm {...contactFormProps} />
       </Container>
-      {dialogProps && <Dialog {...dialogProps} />}
+      {clearFormDialogProps && <Dialog {...clearFormDialogProps} />}
+      {incorrectScoreDialogProps && <Dialog {...incorrectScoreDialogProps} />}
       {alertProps && <Alert {...alertProps} />}
       <Welcome {...welcomeProps} />
       <Loader open={isLoading} />

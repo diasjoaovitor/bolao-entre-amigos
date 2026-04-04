@@ -24,6 +24,7 @@ export const ContactForm = ({
   const defaultValues: TContactFormData = useMemo(
     () => ({
       name: data?.name ?? '',
+      nickname: data?.nickname ?? '',
       email: data?.email ?? '',
       phone: data?.phone ?? ''
     }),
@@ -66,6 +67,15 @@ export const ContactForm = ({
           defaultValue={data?.name}
           error={!!errors.name}
           helperText={errors.name?.message}
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          {...register('nickname')}
+          type="text"
+          label="Apelido"
+          defaultValue={data?.nickname}
+          error={!!errors.nickname}
+          helperText={errors.nickname?.message}
           sx={{ mb: 2 }}
         />
         <TextField
