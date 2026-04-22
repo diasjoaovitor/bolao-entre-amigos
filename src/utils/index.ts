@@ -1,6 +1,5 @@
 import { TContactFormData } from '@/components'
-import { TData, TGame } from '@/constants'
-import { columns } from '@/functions'
+import { columns, TData, TGame } from '@/constants'
 
 const LOCAL_STORAGE_KEY = 'bolao-copa-2026'
 

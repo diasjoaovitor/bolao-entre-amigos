@@ -1,6 +1,6 @@
 import { TableCell, TDocumentDefinitions } from 'pdfmake/interfaces'
 
-import { TData } from '@/constants'
+import { columns, TData } from '@/constants'
 
 type TInfo = {
   name: string
@@ -8,19 +8,6 @@ type TInfo = {
   email?: string
   phone: string
 }
-
-export const columns = [
-  'J',
-  'Data',
-  'Hora',
-  'Local',
-  'Grupo',
-  'Mandante',
-  '',
-  '',
-  '',
-  'Visitante'
-]
 
 export const pdf = (data: TData, info: TInfo): TDocumentDefinitions => {
   const formattedData: TableCell[][] = Object.entries(data).flatMap(
