@@ -63,7 +63,7 @@ export const ContactForm = ({
         <TextField
           {...register('name')}
           type="text"
-          label="Nome"
+          label="Nome (mesmo do PIX)"
           defaultValue={data?.name}
           error={!!errors.name}
           helperText={errors.name?.message}
@@ -72,7 +72,7 @@ export const ContactForm = ({
         <TextField
           {...register('nickname')}
           type="text"
-          label="Apelido"
+          label="Nome ou apelido do titular da aposta"
           defaultValue={data?.nickname}
           error={!!errors.nickname}
           helperText={errors.nickname?.message}
