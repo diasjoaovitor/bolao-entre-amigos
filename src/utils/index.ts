@@ -84,6 +84,7 @@ export const dataObjectToHtml = (data: TData) => {
         index + 1,
         match.date,
         match.time,
+        match.place,
         group,
         match.home,
         match.result[0],
