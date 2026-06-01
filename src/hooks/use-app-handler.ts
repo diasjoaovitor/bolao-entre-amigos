@@ -141,6 +141,9 @@ export const useAppHandler = () => {
       })
     } catch (error) {
       console.error(error)
+      import('@sentry/react').then(({ captureException }) =>
+        captureException(error)
+      )
       setAlert({
         severity: 'error',
         title: 'Erro ao enviar email!',
