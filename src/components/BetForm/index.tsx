@@ -40,7 +40,7 @@ export const BetForm = ({
           return (
             <Paper key={key} sx={{ mb: 2 }}>
               <ListSubheader sx={{ bgcolor: 'warning.light', color: 'black' }}>
-                Grupo {key}
+                {key}
               </ListSubheader>
               <List>
                 {games.map((game, index) => {

@@ -3,7 +3,7 @@ import { columns, TData, TGame } from '@/constants'
 
 const LOCAL_STORAGE_KEY = 'bolao-copa-2026'
 
-type TKey = 'data' | 'contact' | 'first-access-1'
+type TKey = 'data-2' | 'contact' | 'first-access-2'
 
 export const saveToLocalStorage = (
   key: TKey,
