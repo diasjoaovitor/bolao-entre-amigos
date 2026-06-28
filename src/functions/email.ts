@@ -9,6 +9,8 @@ export const sendEmail = async (contact: TContactFormData, data: string) => {
     {
       email: contact.email,
       name: `${contact.name} | ${contact.nickname}`,
+      phone: contact.phone,
+      pix: contact.pix,
       bet: data
     },
     import.meta.env.VITE_EMAIL_PUBLIC_KEY

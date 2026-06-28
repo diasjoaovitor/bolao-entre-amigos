@@ -26,7 +26,8 @@ export const ContactForm = ({
       name: data?.name ?? '',
       nickname: data?.nickname ?? '',
       email: data?.email ?? '',
-      phone: data?.phone ?? ''
+      phone: data?.phone ?? '',
+      pix: data?.pix ?? ''
     }),
     [data]
   )
@@ -102,6 +103,16 @@ export const ContactForm = ({
               sx={{ mb: 2 }}
             />
           )}
+        />
+        <TextField
+          {...register('pix')}
+          type="text"
+          label="Chave PIX"
+          placeholder="Insira sua chave PIX para receber o prêmio"
+          defaultValue={data?.pix}
+          error={!!errors.pix}
+          helperText={errors.pix?.message}
+          sx={{ mb: 2 }}
         />
         <Button type="submit" variant="contained">
           Enviar Aposta
