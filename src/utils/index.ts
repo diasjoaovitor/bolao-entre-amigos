@@ -35,7 +35,7 @@ export const getPossibleIncorrectScores = (bet: TData): TGame[] => {
     group.forEach((match) =>
       match.result.forEach((value) => {
         const number = Number(value)
-        if (value !== null && Number.isInteger(number) && number > 10) {
+        if (value !== null && Number.isInteger(number) && number >= 10) {
           possibleIncorrectScores.push(match)
           return true
         }
