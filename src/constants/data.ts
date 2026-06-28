@@ -19,7 +19,7 @@ export const data: TData = {
       place: 'Boston',
       home: 'Africa do Sul',
       away: 'Canadá',
-      result: [1, 2] // Canadá 2x1 Africa do Sul — país-sede com forte apoio; vitória canadense por 2x1 maximiza pontos esperados
+      result: [null, null]
     },
     {
       date: '29/jun',
@@ -27,7 +27,7 @@ export const data: TData = {
       place: 'Nova Jersey',
       home: 'Brasil',
       away: 'Japão',
-      result: [2, 1] // Brasil 2x1 Japão — Brasil superior mas Japão é perigoso (derrubou Alemanha e Espanha em 2022); 2x1 captura vitória + placar comum
+      result: [null, null]
     },
     {
       date: '29/jun',
@@ -35,7 +35,7 @@ export const data: TData = {
       place: 'Los Angeles',
       home: 'Alemanha',
       away: 'Paraguai',
-      result: [2, 1] // Alemanha 2x1 Paraguai — Alemanha domina tecnicamente; Paraguai defensivo pode marcar no contra-ataque
+      result: [null, null]
     },
     {
       date: '29/jun',
@@ -43,7 +43,7 @@ export const data: TData = {
       place: 'El Gigante de Acero',
       home: 'Holanda',
       away: 'Marrocos',
-      result: [2, 1] // Holanda 2x1 Marrocos — Marrocos tem defesa sólida (semifinalista 2022) mas Holanda tem mais qualidade ofensiva
+      result: [null, null]
     },
     {
       date: '30/jun',
@@ -51,7 +51,7 @@ export const data: TData = {
       place: 'Toronto Field',
       home: 'Costa do Marfim',
       away: 'Noruega',
-      result: [1, 2] // Noruega 2x1 Costa do Marfim — Haaland decisivo; Costa do Marfim física mas Noruega favorita
+      result: [null, null]
     },
     {
       date: '30/jun',
@@ -59,7 +59,7 @@ export const data: TData = {
       place: 'Los Angeles',
       home: 'França',
       away: 'Suécia',
-      result: [2, 1] // França 2x1 Suécia — França claramente superior; Suécia pode marcar mas não segurar
+      result: [null, null]
     },
     {
       date: '30/jun',
@@ -67,7 +67,7 @@ export const data: TData = {
       place: 'Santa Clara',
       home: 'México',
       away: 'Equador',
-      result: [2, 1] // México 2x1 Equador — México com enorme apoio da torcida como país-sede; Equador pode complicar
+      result: [null, null]
     },
     {
       date: '01/jul',
@@ -75,7 +75,7 @@ export const data: TData = {
       place: 'Seattle Field',
       home: 'Bélgica',
       away: 'Senegal',
-      result: [2, 1] // Bélgica 2x1 Senegal — Bélgica levemente favorita; Senegal é bem organizado mas tem desvantagem técnica
+      result: [null, null]
     },
     {
       date: '01/jul',
@@ -83,7 +83,7 @@ export const data: TData = {
       place: 'Houston',
       home: 'Inglaterra',
       away: 'RD Congo',
-      result: [2, 0] // Inglaterra 2x0 RD Congo — grande diferença de nível; RD Congo improvável de marcar
+      result: [null, null]
     },
     {
       date: '01/jul',
@@ -91,7 +91,7 @@ export const data: TData = {
       place: 'Dallas',
       home: 'Estados Unidos',
       away: 'Bósnia',
-      result: [2, 1] // EUA 2x1 Bósnia — EUA em casa com apoio massivo; Bósnia física pode diminuir
+      result: [null, null]
     },
     {
       date: '02/jul',
@@ -99,7 +99,7 @@ export const data: TData = {
       place: 'Azteca',
       home: 'Espanha',
       away: 'Áustria',
-      result: [2, 1] // Espanha 2x1 Áustria — Espanha técnica e dominante; Áustria cresceu muito mas ainda inferior
+      result: [null, null]
     },
     {
       date: '02/jul',
@@ -107,7 +107,7 @@ export const data: TData = {
       place: 'Atlanta',
       home: 'Portugal',
       away: 'Croácia',
-      result: [2, 1] // Portugal 2x1 Croácia — Portugal favorito; Croácia experiente (finalista 2018) e capaz de marcar
+      result: [null, null]
     },
     {
       date: '03/jul',
@@ -115,7 +115,7 @@ export const data: TData = {
       place: 'Miami',
       home: 'Suíça',
       away: 'Argélia',
-      result: [2, 1] // Suíça 2x1 Argélia — Suíça mais consistente na Europa; Argélia perigosa mas inferior no ranking
+      result: [null, null]
     },
     {
       date: '03/jul',
@@ -123,7 +123,7 @@ export const data: TData = {
       place: 'Dallas',
       home: 'Austrália',
       away: 'Egito',
-      result: [1, 2] // Egito 2x1 Austrália — Salah ainda decisivo; Austrália melhorou mas Egito tem mais talento individual
+      result: [null, null]
     },
     {
       date: '03/jul',
@@ -131,7 +131,7 @@ export const data: TData = {
       place: 'Vancouver Place',
       home: 'Argentina',
       away: 'Cabo Verde',
-      result: [3, 0] // Argentina 3x0 Cabo Verde — campeã mundial contra um estreante; diferença abissal de nível
+      result: [null, null]
     },
     {
       date: '03/jul',
@@ -139,7 +139,7 @@ export const data: TData = {
       place: 'Kansas City',
       home: 'Colômbia',
       away: 'Gana',
-      result: [2, 1] // Colômbia 2x1 Gana — Colômbia superior com ataque dinâmico; Gana pode pontuar mas não segurar
+      result: [null, null]
     }
   ]
 }
