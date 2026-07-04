@@ -34,9 +34,9 @@ export type TBetChangeParams = {
 export const useAppHandler = () => {
   ;(pdfMake as any).vfs = pdfFonts.vfs
 
-  const defaultBets = getFromLocalStorage('data-2')
+  const defaultBets = getFromLocalStorage('data-3')
   const defaultContact = getFromLocalStorage('contact')
-  const isFirstAccess = !!getFromLocalStorage('first-access-2')
+  const isFirstAccess = !!getFromLocalStorage('first-access-3')
 
   const hasBet = Object.keys(defaultBets).length
 
@@ -55,7 +55,7 @@ export const useAppHandler = () => {
   useEffect(() => {
     if (isFirstAccess) {
       setWelcomeModalIsOpened(true)
-      saveToLocalStorage('first-access-2', false)
+      saveToLocalStorage('first-access-3', false)
     }
   }, [isFirstAccess])
 
@@ -65,14 +65,14 @@ export const useAppHandler = () => {
       bets[key]![index].result[teamKey === 'home' ? 0 : 1] = !isNaN(number)
         ? number
         : null
-      saveToLocalStorage('data-2', bets)
+      saveToLocalStorage('data-3', bets)
       return bets
     })
   }
 
   const handleClear = () => {
     setBets(data)
-    saveToLocalStorage('data-2', data)
+    saveToLocalStorage('data-3', data)
     setClearFormDialog(null)
     setAlert({
       severity: 'success',
